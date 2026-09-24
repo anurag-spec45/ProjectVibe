@@ -1,0 +1,151 @@
+:root {
+  --bg: #0f1220;
+  --card: #1a1e33;
+  --accent: #7c5cff;
+  --accent-2: #22d3ee;
+  --text: #f2f3f8;
+  --muted: #9297b3;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+.topbar h1 { margin: 0; font-size: 1.3rem; }
+
+.tabs { display: flex; gap: 8px; }
+.tab-btn {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.tab-btn.active { background: white; color: var(--accent); }
+
+main { padding: 20px; max-width: 960px; margin: 0 auto; }
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+.calendar-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+.calendar-controls button {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid #2c3252;
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+.calendar-controls input {
+  flex: 1;
+  min-width: 160px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #2c3252;
+  background: var(--card);
+  color: var(--text);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+.calendar-day {
+  background: var(--card);
+  border-radius: 10px;
+  min-height: 70px;
+  padding: 6px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.calendar-day.has-events { border-color: var(--accent-2); }
+.calendar-day.selected { border-color: var(--accent); background: #232849; }
+.calendar-day .day-num { font-weight: 600; font-size: 0.85rem; }
+.calendar-day .dot-count { font-size: 0.7rem; color: var(--accent-2); }
+.calendar-day.empty { visibility: hidden; }
+
+.day-events, .event-card-list {
+  margin-top: 20px;
+  display: grid;
+  gap: 14px;
+}
+
+.event-card {
+  display: flex;
+  background: var(--card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid #2c3252;
+}
+.event-img { width: 120px; height: 120px; object-fit: cover; background: #2c3252; }
+.event-body { padding: 12px 16px; flex: 1; }
+.event-title { margin: 0 0 4px; font-size: 1.05rem; }
+.event-meta { margin: 0 0 4px; color: var(--muted); font-size: 0.85rem; }
+.event-friends { margin: 0 0 8px; font-size: 0.8rem; color: var(--accent-2); }
+.event-actions button {
+  margin-right: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+.interested-btn { background: var(--accent); color: white; }
+.interested-btn.active { background: #34d399; }
+.share-btn { background: transparent; color: var(--accent-2); border: 1px solid var(--accent-2) !important; }
+
+.chat-window {
+  height: 400px;
+  overflow-y: auto;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.chat-bubble { padding: 8px 12px; border-radius: 12px; max-width: 75%; font-size: 0.9rem; }
+.chat-bubble.user { align-self: flex-end; background: var(--accent); color: white; }
+.chat-bubble.bot { align-self: flex-start; background: #2c3252; }
+
+.chat-form { display: flex; gap: 8px; margin-top: 10px; }
+.chat-form input {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid #2c3252;
+  background: var(--card);
+  color: var(--text);
+}
+.chat-form button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vibe Events</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <h1>✨ Vibe Events</h1>
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="calendar">Calendar</button>
+      <button class="tab-btn" data-tab="dashboard">My RSVPs</button>
+      <button class="tab-btn" data-tab="chat">Chat</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Event Calendar -->
+    <section id="tab-calendar" class="tab-panel active">
+      <div class="calendar-controls">
+        <button id="prevMonth">‹</button>
+        <h2 id="calendarLabel"></h2>
+        <button id="nextMonth">›</button>
+        <input id="citySearch" type="text" placeholder="Search city (e.g. Mumbai)" />
+        <button id="citySearchBtn">Search</button>
+      </div>
+      <div id="calendarGrid" class="calendar-grid"></div>
+      <div id="dayEvents" class="day-events"></div>
+    </section>
+
+    <!-- RSVP Dashboard -->
+    <section id="tab-dashboard" class="tab-panel">
+      <h2>Your Confirmed Events</h2>
+      <div id="dashboardList" class="event-card-list"></div>
+    </section>
+
+    <!-- Chat -->
+    <section id="tab-chat" class="tab-panel">
+      <div id="chatWindow" class="chat-window"></div>
+      <form id="chatForm" class="chat-form">
+        <input id="chatInput" type="text" placeholder='Try: "find events in Delhi"' autocomplete="off" />
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <template id="eventCardTemplate">
+    <div class="event-card">
+      <img class="event-img" src="" alt="" />
+      <div class="event-body">
+        <h3 class="event-title"></h3>
+        <p class="event-meta"></p>
+        <p class="event-friends"></p>
+        <div class="event-actions">
+          <button class="interested-btn">Interested</button>
+          <button class="share-btn">Share</button>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <script src="js/api.js"></script>
+  <script src="js/calendar.js"></script>
+  <script src="js/chat.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
